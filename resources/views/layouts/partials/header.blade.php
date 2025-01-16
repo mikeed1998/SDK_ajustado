@@ -117,25 +117,25 @@ body {
         <div class="header-navbar-collapse collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="header-navbar-nav navbar-nav ms-auto mb-2 mb-lg-0 text-md-0 text-center">
                 <li class="header-nav-item nav-item px-2">
-                    <a class="header-nav-link nav-link @if(Route::is('front.home')) active @endif" aria-current="page" href="#">Inicio</a>
+                    <a class="header-nav-link nav-link @if(Route::is('front.home')) active @endif" aria-current="page" href="{{ route('front.home') }}">Inicio</a>
                 </li>
                 <li class="header-nav-item nav-item px-2">
-                    <a class="header-nav-link nav-link @if(Route::is('front.about')) active @endif" href="#">Sobre mi</a>
+                    <a class="header-nav-link nav-link @if(Route::is('front.about')) active @endif" href="{{ route('front.about') }}">Sobre mi</a>
                 </li>
                 <li class="header-nav-item nav-item px-2">
-                    <a class="header-nav-link nav-link @if(Route::is('front.portfolio')) active @endif" href="#">Portafolio</a>
+                    <a class="header-nav-link nav-link @if(Route::is('front.portfolio')) active @endif" href="{{ route('front.portfolio') }}">Portafolio</a>
                 </li>
                 <li class="header-nav-item nav-item px-2">
-                    <a class="header-nav-link nav-link" href="#">Experiencia</a>
+                    <a class="header-nav-link nav-link @if(Route::is('front.experience')) active @endif" href="{{ route('front.experience') }}">Experiencia</a>
                 </li>
                 <li class="header-nav-item nav-item px-2">
-                    <a class="header-nav-link nav-link" href="#">Mi CV</a>
+                    <a class="header-nav-link nav-link @if(Route::is('front.my_cv')) active @endif" href="{{ route('front.my_cv') }}">Mi CV</a>
                 </li>
                 <li class="header-nav-item nav-item px-2">
-                    <a class="header-nav-link nav-link" href="#">Contacto</a>
+                    <a class="header-nav-link nav-link @if(Route::is('front.contact')) active @endif" href="{{ route('front.contact') }}">Contacto</a>
                 </li>
                 <li class="header-nav-item nav-item px-2">
-                    <a class="header-nav-link nav-link" href="#">Blog</a>
+                    <a class="header-nav-link nav-link @if(Route::is('front.blog')) active @endif" href="{{ route('front.blog') }}">Blog</a>
                 </li>
                 <li class="header-nav-item nav-item px-2">
                     <a href="#/" class="header-btn-outline-light btn btn-outline-light" type="button">¡Contactame!</a>

@@ -16,6 +16,6 @@ Route::get('/home', 'FrontController@home')->name('front.home');
 Route::get('/about', 'FrontController@about')->name('front.about');
 Route::get('/experience', 'FrontController@experience')->name('front.experience');
 Route::get('/portfolio', 'FrontController@portfolio')->name('front.portfolio');
-Route::get('/my-cv', 'FrontController@my_cv')->name('front.my_cv');
+Route::get('/my_cv', 'FrontController@my_cv')->name('front.my_cv');
 Route::get('/blog', 'FrontController@blog')->name('front.blog');
 Route::get('/contact', 'FrontController@contact')->name('front.contact');
