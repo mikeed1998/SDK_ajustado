@@ -1,0 +1,43 @@
+#notification {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px); /* Centra y ajusta la posición en Y */
+    min-width: 250px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 9999;
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    display: flex;
+    align-items: center; /* Alinea el ícono y el texto */
+}
+
+#notification i {
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 1.4rem;
+}
+
+/* Verde de éxito */
+#notification.success {
+    background-color: #28a745; /* Verde más suave */
+}
+
+/* Rojo de error */
+#notification.error {
+    background-color: #e53935; /* Rojo vibrante */
+}
+
+#notification.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); /* Asegura que la notificación esté en el centro y visible */
+}
+
+#notification.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
