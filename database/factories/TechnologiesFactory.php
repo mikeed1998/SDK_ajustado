@@ -2,11 +2,12 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Technologies;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Technologies::class, function (Faker $faker) {
     return [
-        //
+        'name' => $faker->word,
+        'slug' => $faker->slug,
     ];
 });

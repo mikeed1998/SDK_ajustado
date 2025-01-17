@@ -15,6 +15,15 @@ class CreateElementosTable extends Migration
     {
         Schema::create('elementos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('elemento');
+			$table->text('texto')->nullable();
+			$table->string('imagen')->nullable();
+			$table->string('url')->nullable();
+			$table->boolean('contenido')->default(0);
+			$table->boolean('activo')->default(1);
+			$table->integer('orden')->default('666');
+            $table->unsignedBigInteger('seccion_id')->nullable();
+            $table->foreign('seccion_id')->references('id')->on('seccions')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
         });
     }

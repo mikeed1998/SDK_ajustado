@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    private $table = 'categories';
+    protected $fillable = ['name', 'slug'];
 
+    // Relación uno a muchos con Projects
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

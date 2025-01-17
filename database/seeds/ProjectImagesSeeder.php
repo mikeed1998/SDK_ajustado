@@ -1,5 +1,7 @@
 <?php
 
+use App\Project;
+use App\ProjectImages;
 use Illuminate\Database\Seeder;
 
 class ProjectImagesSeeder extends Seeder
@@ -11,6 +13,11 @@ class ProjectImagesSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $projects = Project::all();
+        $projects->each(function ($project) {
+            factory(ProjectImages::class, 3)->create([
+                'project_id' => $project->id
+            ]);
+        });
     }
 }

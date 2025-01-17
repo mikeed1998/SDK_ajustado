@@ -14,12 +14,11 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->longText('content')->nullable();
-            $table->foreignId('category_id')->nullable()->constrained('categories')->cascadeOnUpdate()->nullOnDelete(); // Relación con categorías
             $table->string('image')->nullable();
             $table->string('demo_url')->nullable();
             $table->string('repo_url')->nullable();
@@ -30,6 +29,8 @@ class CreateProjectsTable extends Migration
             $table->date('end_date')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->integer('order')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable(); // Relación con categorías
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
             $table->softDeletes();
         });

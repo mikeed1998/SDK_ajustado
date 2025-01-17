@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTechnologiesTable extends Migration
+class CreateSeccionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTechnologiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('technologies', function (Blueprint $table) {
+        Schema::create('seccions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name'); // Nombre de la tecnología
-            $table->string('slug')->unique(); // Slug único
+            $table->string('seccion');
+			$table->string('portada')->nullable();
+			$table->string('slug')->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateTechnologiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('technologies');
+        Schema::dropIfExists('seccions');
     }
 }

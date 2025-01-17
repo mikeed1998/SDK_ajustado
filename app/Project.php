@@ -3,35 +3,30 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-    use SoftDeletes;
-
-    private $table = 'projects';
-
     protected $fillable = [
-        'title', 'slug', 'description', 'content', 'category_id', 'image', 'demo_url',
-        'repo_url', 'client_url', 'client_name', 'client_email', 'start_date', 'end_date',
-        'is_featured', 'order',
+        'title', 'slug', 'description', 'content', 'image', 'demo_url', 
+        'repo_url', 'client_url', 'client_name', 'client_email', 
+        'start_date', 'end_date', 'is_featured', 'order', 'category_id'
     ];
 
-    // Relación con la categoría
+    // Relación inversa con Category
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    // Relación con la galería
+    // Relación uno a muchos con ProjectImages
     public function images()
     {
         return $this->hasMany(ProjectImages::class);
     }
 
-    // Relación con tecnologías
+    // Relación muchos a muchos con Technologies a través de project_technologies
     public function technologies()
     {
-        return $this->hasMany(ProjectTechnologies::class);
+        return $this->belongsToMany(Technologies::class, 'project_technologies');
     }
 }

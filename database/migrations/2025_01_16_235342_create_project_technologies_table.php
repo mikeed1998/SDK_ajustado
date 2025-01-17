@@ -14,7 +14,11 @@ class CreateProjectTechnologiesTable extends Migration
     public function up()
     {
         Schema::create('project_technologies', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedBigInteger('project_id'); // Relación con proyectos
+            $table->unsignedBigInteger('technology_id'); // Relación con tecnologías
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('technology_id')->references('id')->on('technologies')->onUpdate('cascade')->onDelete('cascade');
+            $table->primary(['project_id', 'technology_id']); // Clave primaria compuesta
             $table->timestamps();
         });
     }

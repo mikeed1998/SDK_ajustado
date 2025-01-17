@@ -6,5 +6,6 @@
     
     <p>HOME</p>
     @livewire('prueba')
+    @livewire('project-cards')
 
 @endsection
