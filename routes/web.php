@@ -19,23 +19,29 @@ Route::get('/portfolio', 'FrontController@portfolio')->name('front.portfolio');
 Route::get('/my_cv', 'FrontController@my_cv')->name('front.my_cv');
 Route::get('/blog', 'FrontController@blog')->name('front.blog');
 Route::get('/contact', 'FrontController@contact')->name('front.contact');
+Route::post('/formularioContactoTest', 'FrontController@formularioContactoTest')->name('front.formularioContactoTest');
+Route::post('/formularioContacto', 'FrontController@formularioContacto')->name('front.formularioContacto');
+Route::post('/validarCampo', 'FrontController@validarCampo')->name('front.validarCampo');
+
+Route::get('/admin', 'FrontController@admin')->name('front.admin')->middleware('checkAdminAccess');
 
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
 });
 
-Route::group(['middleware' => ['auth', 'isAdmin']], function() {
-    Route::get('homeA', 'SeccionController@index')->name('admin.index');
+Route::group(['middleware' => ['auth', 'system_managment']], function() {
+    Route::get('/system_managment', 'SeccionController@index')->name('admin.index');
 
-    Route::prefix('politicas')->name('politicas.')->group(function(){
-        Route::get('/','PoliticasController@index')->name('index');
-        Route::get('/edit/{id}','PoliticasController@edit')->name('edit');
-        Route::put('/update/{id}','PoliticasController@update')->name('update');
+    Route::prefix('politics')->name('politics.')->group(function(){
+        Route::get('/','PoliticsController@index')->name('index');
+        Route::get('/edit/{id}','PoliticsController@edit')->name('edit');
+        Route::put('/update/{id}','PoliticsController@update')->name('update');
     });
 
-    Route::prefix('faqsA')->name('faqsA.')->group(function(){
+    Route::prefix('faqs')->name('faqs.')->group(function(){
         Route::get('/','FAQController@index')->name('index');
         Route::get('/create','FAQController@create')->name('create');
         Route::post('/store','FAQController@store')->name('store');
@@ -62,7 +68,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function() {
         Route::delete('/destroy/{blog}', 'BlogsController@destroy')->name('destroy');
     });
 
-    Route::prefix('secciones')->name('seccion.')->group(function(){
+    Route::prefix('modules')->name('module.')->group(function(){
         Route::get('/','SeccionController@index')->name('index');
         Route::get('/{slug}','SeccionController@show')->name('show');
     });

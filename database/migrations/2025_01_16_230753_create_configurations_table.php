@@ -15,6 +15,28 @@ class CreateConfigurationsTable extends Migration
     {
         Schema::create('configurations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('titulo')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->string('destinatario')->nullable();
+            $table->string('destinatario2')->nullable();
+            $table->string('remitente')->nullable();
+            $table->string('remitentepass')->nullable();
+            $table->string('remitentehost')->nullable();
+            $table->string('remitenteport')->nullable();
+            $table->string('remitenteseguridad')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('whatsapp2')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('envio')->nullable();
+            $table->string('envioglobal')->nullable();
+            $table->string('iva')->nullable();
+            $table->string('incremento')->nullable();
+            $table->text('mapa')->nullable();
+            $table->text('direccion')->nullable();
             $table->timestamps();
         });
     }
